@@ -1,0 +1,173 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../app';
+@source '../components';
+@source '../src';
+
+@theme {
+  --color-ink: #0C0B14;
+  --color-panel: #1C1A30;
+  --color-cream: #F4EFE6;
+  --color-vermilion: #FF5A36;
+  --color-gold: #FFB800;
+  --color-lime: #FFB800; /* Replaced lime with warm golden amber */
+  --color-lilac: #B9A8FF;
+  --color-muted-on-dark: #B3AFC9;
+  --color-muted-on-light: #5A5670;
+  --color-muted-on-colour: #1E1B2E;
+
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+}
+
+:root {
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+
+  /* Apple Light Mode Standards */
+  --bg-primary: #F5F5F7;
+  --bg-surface: #FFFFFF;
+  --bg-panel: #FFFFFF;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --text-main: #1D1D1F;
+  --text-muted: #6E6E73;
+  --dot-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  /* Dark mode defaults */
+  --bg-primary: #0C0B14;
+  --bg-surface: #141224;
+  --bg-panel: #1C1A30;
+  --border-subtle: rgba(244, 239, 230, 0.08);
+  --text-main: #F4EFE6;
+  --text-muted: #B3AFC9;
+  --dot-color: rgba(244, 239, 230, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+/* Bulletproof layout tokens matching design canvas pixel-for-pixel */
+.section-container {
+  width: 100%;
+  max-width: 1312px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+.section-padding {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+/* Faint dot grid for hero adapting to current theme */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Explicit class fallbacks so .font-display, .font-serif, .font-mono always work */
+.font-display {
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.font-serif {
+  font-family: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif !important;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace !important;
+}
+
+.font-serif-italic {
+  font-family: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif !important;
+  font-style: italic !important;
+}
+
+.font-mono-label {
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Fluid type utilities */
+.h1-hero {
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(52px, 7.6vw, 114px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+.h2-section {
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(44px, 6.2vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-panel);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
