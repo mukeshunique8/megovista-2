@@ -28,31 +28,47 @@
   --color-ink: #0F172A;
   --color-cream: #F8FAFC;
 
-  --font-display: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-sans: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  /* Apple UI System Font Stack */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans-tight: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
-  --font-display: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-sans: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans-tight: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
 
-  /* Harmonious Executive Light Mode */
-  --bg-primary: #F8FAFC;
+  /* Harmonious Executive Light Mode - Apple White */
+  --bg-primary: #F5F5F7;
+  /* Clean Apple Off-White */
   --bg-surface: #FFFFFF;
-  --bg-panel: #F1F5F9;
-  --border-subtle: #E2E8F0;
-  --text-main: #0F172A;
-  --text-muted: #475569;
-  --dot-color: rgba(15, 23, 42, 0.04);
+  /* Crisp White */
+  --bg-panel: #EBEBED;
+  /* Soft Apple Panel */
+  --border-subtle: #E5E5EA;
+  /* Apple Border */
+  --text-main: #1D1D1F;
+  /* Apple Slate Ink */
+  --text-muted: #6E6E73;
+  /* Apple Muted Gray */
+  --dot-color: rgba(29, 29, 31, 0.04);
 
-  /* Matching Primary & Secondary Tokens */
-  --primary: #1D4ED8;              /* Deep Royal Blue - High Contrast WCAG AAA */
-  --primary-foreground: #FFFFFF;    /* Pure White on Primary */
-  --secondary: #F1F5F9;            /* Clean Slate Neutral */
-  --secondary-foreground: #0F172A; /* Deep Slate on Secondary */
-  --accent: #2563EB;               /* Active Highlight */
+  /* Trust & Process Primary Tokens (Executive Trust Royal Blue) */
+  --primary: #1D4ED8;
+  /* Trust Royal Blue - High Contrast WCAG AAA */
+  --primary-foreground: #FFFFFF;
+  /* Pure White on Primary */
+  --secondary: #F0F2F5;
+  /* Clean Slate Neutral */
+  --secondary-foreground: #1D1D1F;
+  /* Deep Slate on Secondary */
+  --accent: #2563EB;
+  /* Active Highlight */
   --accent-foreground: #FFFFFF;
 }
 
@@ -67,11 +83,16 @@
   --dot-color: rgba(248, 250, 252, 0.06);
 
   /* Matching Primary & Secondary Tokens */
-  --primary: #3B82F6;              /* Electric Sapphire Blue */
-  --primary-foreground: #FFFFFF;    /* Pure White on Primary */
-  --secondary: #1E293B;            /* Dark Slate Neutral */
-  --secondary-foreground: #F8FAFC; /* Crisp White on Secondary */
-  --accent: #60A5FA;               /* Soft Sky Highlight */
+  --primary: #3B82F6;
+  /* Electric Sapphire Blue */
+  --primary-foreground: #FFFFFF;
+  /* Pure White on Primary */
+  --secondary: #1E293B;
+  /* Dark Slate Neutral */
+  --secondary-foreground: #F8FAFC;
+  /* Crisp White on Secondary */
+  --accent: #60A5FA;
+  /* Soft Sky Highlight */
   --accent-foreground: #0B0F19;
 }
 
@@ -84,7 +105,7 @@ html {
   min-height: 100%;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -96,6 +117,8 @@ body {
   width: 100%;
   min-height: 100%;
   overflow-x: clip;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: -0.012em;
 }
 
 /* Bulletproof layout tokens matching design canvas pixel-for-pixel */
@@ -140,52 +163,31 @@ body {
   background-size: 40px 40px;
 }
 
-/* Explicit class fallbacks so .font-display, .font-serif, .font-mono, .font-serif-display always work */
-.font-display {
-  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-}
-
-.font-serif {
-  font-family: var(--font-serif-display), 'Playfair Display', Georgia, serif !important;
-}
-
-.font-serif-display {
-  font-family: var(--font-serif-display), 'Playfair Display', Georgia, serif !important;
-}
-
+/* Pure Apple System UI Font Overrides across all typography utility classes */
+.font-display,
+.font-sans,
+.font-serif,
+.font-serif-display,
 .font-sans-tight {
-  font-family: var(--font-sans-tight), 'Inter', var(--font-sans), system-ui, sans-serif !important;
-  letter-spacing: -0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", -apple-system-body, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
 }
 
-.font-mono {
-  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace !important;
-}
-
-.font-serif-italic {
-  font-family: var(--font-serif-display), 'Playfair Display', Georgia, serif !important;
-  font-style: italic !important;
-}
-
+.font-mono,
 .font-mono-label {
-  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace !important;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace !important;
 }
 
-/* Image Zoom & Brutalist Exec Card Transitions */
+/* Image Zoom & Brutalist Exec Card Transitions (Full clear color, scale on hover) */
 .img-zoom-wrapper {
   overflow: hidden;
 }
 
 .img-zoom-wrapper img {
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
-  filter: grayscale(100%);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .exec-card:hover .img-zoom-wrapper img {
   transform: scale(1.05);
-  filter: grayscale(0%);
 }
 
 /* Fluid type utilities */
@@ -209,13 +211,16 @@ body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--bg-panel);
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }

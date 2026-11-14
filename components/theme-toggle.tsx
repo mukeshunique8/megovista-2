@@ -27,7 +27,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-colors border bg-[var(--bg-surface)] text-[var(--text-main)] border-[var(--border-subtle)] hover:bg-black/5 dark:hover:bg-white/10 ${className}`}
+      className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-colors border bg-[var(--bg-surface)] text-[var(--text-main)] border-[var(--border-subtle)] hover:bg-black/5 dark:hover:bg-white/10 cursor-pointer ${className}`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
@@ -39,7 +39,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
         transition={{ duration: 0.2 }}
         className="flex items-center justify-center"
       >
-        {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
       </motion.div>
     </motion.button>
   )
