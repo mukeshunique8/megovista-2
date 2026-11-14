@@ -6,10 +6,9 @@
 
 export const ROUTES = {
   home: '#home',
-  story: '#story',
-  offer: '#offer',
-  blueprint: '#blueprint',
-  people: '#people',
+  services: '#services',
+  process: '#process',
+  about: '#about',
   faq: '#faq',
   contact: '#contact',
 } as const
@@ -17,23 +16,22 @@ export const ROUTES = {
 export type RouteKey = keyof typeof ROUTES
 
 export const NAV_LINKS = [
-  { label: 'Story', href: ROUTES.story },
-  { label: 'Solutions', href: ROUTES.offer },
-  { label: 'Blueprint', href: ROUTES.blueprint },
-  { label: 'People', href: ROUTES.people },
+  { label: 'Services', href: ROUTES.services },
+  { label: 'Process', href: ROUTES.process },
+  { label: 'About', href: ROUTES.about },
   { label: 'FAQ', href: ROUTES.faq },
+  { label: 'Contact', href: ROUTES.contact },
 ] as const
 
 export const MARQUEE_WORDS = [
-  'PF & ESI',
-  'GST filing',
-  'Payroll',
-  'POSH',
-  'ISO 9001',
-  'ISMS 27001',
-  'CMMI',
-  'MSME / Udyam',
-  'DSC',
-  'Labour Acts',
+  'PF & ESI Compliance',
+  'Monthly ECR Filing',
+  'Full-Cycle Payroll',
+  'POSH Training & ICC',
+  'ISO 9001 & 27001',
+  'CMMI Advisory',
+  'GST & Tax Filings',
+  'Labour Act Registers',
+  'MSME & Udyam',
+  'Digital Signature (DSC)',
 ] as const
-

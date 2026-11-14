@@ -38,7 +38,7 @@ export function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.6, y: 20 }}
           whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-24 md:bottom-8 right-5 sm:right-8 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FFB800] text-[#0C0B14] shadow-2xl border-2 border-[#0C0B14] flex items-center justify-center transition-colors hover:bg-[#ffc83b]"
+          className="fixed bottom-24 md:bottom-8 right-5 sm:right-8 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-primary-foreground shadow-2xl flex items-center justify-center transition-colors hover:opacity-90"
           aria-label="Scroll to top"
           title="Back to top"
         >

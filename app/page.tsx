@@ -1,29 +1,31 @@
 import { SmoothScrollProvider } from '@/components/providers/smooth-scroll'
 import { ScrollProgress } from '@/components/layout/scroll-progress'
-import { ScrollToTop } from '@/components/layout/scroll-to-top'
-import { Hero } from '@/components/sections/hero'
-import { GrowthStory } from '@/components/sections/GrowthStory'
-import { Offer } from '@/components/sections/Offer'
-import { Blueprint } from '@/components/sections/blueprint'
-import { People } from '@/components/sections/People'
-import { FaqContact } from '@/components/sections/FaqContact'
-import { SiteFooter } from '@/components/layout/site-footer'
+import { Navbar } from '@/components/layout/Navbar'
+import { HeroSection } from '@/components/sections/HeroSection'
+import { ServicesSection } from '@/components/sections/ServicesSection'
+import { ProcessSection } from '@/components/sections/ProcessSection'
+import { AboutSection } from '@/components/sections/AboutSection'
+import { FaqSection } from '@/components/sections/FaqSection'
+import { ContactSection } from '@/components/sections/ContactSection'
+import { Footer } from '@/components/layout/Footer'
+import { FloatingActions } from '@/components/ui/FloatingActions'
 
 export default function Page() {
   return (
     <SmoothScrollProvider>
       <ScrollProgress />
-      <div className="relative w-full min-h-screen bg-[var(--bg-primary)] text-[var(--text-main)] selection:bg-[#FFB800] selection:text-[#0C0B14] transition-colors duration-200">
+      <div className="relative w-full min-h-screen bg-[var(--bg-primary)] text-[var(--text-main)] transition-colors duration-200">
+        <Navbar />
         <main className="w-full">
-          <Hero />
-          <GrowthStory />
-          <Offer />
-          <Blueprint />
-          <People />
-          <FaqContact />
+          <HeroSection />
+          <ServicesSection />
+          <ProcessSection />
+          <AboutSection />
+          <FaqSection />
+          <ContactSection />
         </main>
-        <SiteFooter />
-        <ScrollToTop />
+        <Footer />
+        <FloatingActions />
       </div>
     </SmoothScrollProvider>
   )

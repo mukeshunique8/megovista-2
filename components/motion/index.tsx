@@ -99,7 +99,7 @@ export function Marquee({
 // 4. Pulse: ring scales 1 → 2.4, opacity 0.7 → 0, 2.4s ease-out infinite
 export function PulseRing({
   size = 140,
-  color = '#FFB800',
+  color = 'var(--primary)',
   className = '',
 }: {
   size?: number
@@ -131,7 +131,7 @@ export function PulseRing({
 
 // 5. Blob: border-radius morphs
 export function MorphingBlob({
-  color = '#FF5A36',
+  color = 'var(--primary)',
   className = '',
   style,
 }: {
@@ -228,8 +228,8 @@ export function SpinBadge({
       style={{ width: size, height: size }}
       className={`relative flex items-center justify-center shrink-0 ${className}`}
     >
-      {/* Center solid gold dot */}
-      <div className="w-3.5 h-3.5 rounded-full bg-[#FFB800] z-10 shadow-sm" />
+      {/* Center solid primary dot */}
+      <div className="w-3.5 h-3.5 rounded-full bg-primary z-10 shadow-sm" />
 
       {/* Rotating circular text */}
       <motion.svg

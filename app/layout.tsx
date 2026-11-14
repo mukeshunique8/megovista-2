@@ -1,22 +1,14 @@
 import { Analytics } from '@vercel/analytics/next'
-import { Space_Grotesk, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-sans',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
-})
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  variable: '--font-instrument-serif',
-  display: 'swap',
-  weight: ['400'],
-  style: ['italic', 'normal'],
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -36,7 +28,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0C0B14',
+  themeColor: '#0B0F19',
 }
 
 export default function RootLayout({
@@ -48,9 +40,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="antialiased selection:bg-[#FF5A36] selection:text-[#0C0B14]">
+      <body className="antialiased selection:bg-[#2563EB] selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

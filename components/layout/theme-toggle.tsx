@@ -27,11 +27,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-colors border ${
-        isDark
-          ? 'bg-[#1C1A30] text-[#FFB800] border-white/10 hover:bg-[#252242]'
-          : 'bg-[#F4EFE6] text-[#0C0B14] border-[#0C0B14]/15 hover:bg-[#e8e2d5]'
-      } ${className}`}
+      className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-colors border bg-[var(--bg-surface)] text-[var(--text-main)] border-[var(--border-subtle)] hover:bg-black/5 dark:hover:bg-white/10 ${className}`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >

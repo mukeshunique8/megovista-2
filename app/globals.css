@@ -8,47 +8,71 @@
 @source '../src';
 
 @theme {
-  --color-ink: #0C0B14;
-  --color-panel: #1C1A30;
-  --color-cream: #F4EFE6;
-  --color-vermilion: #FF5A36;
-  --color-gold: #FFB800;
-  --color-lime: #FFB800; /* Replaced lime with warm golden amber */
-  --color-lilac: #B9A8FF;
-  --color-muted-on-dark: #B3AFC9;
-  --color-muted-on-light: #5A5670;
-  --color-muted-on-colour: #1E1B2E;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-background: var(--bg-primary);
+  --color-surface: var(--bg-surface);
+  --color-panel: var(--bg-panel);
+  --color-border: var(--border-subtle);
+  --color-muted: var(--text-muted);
+  --color-foreground: var(--text-main);
 
-  --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-sans: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+  /* Fallback aliases mapped cleanly to primary & neutrals */
+  --color-gold: var(--primary);
+  --color-vermilion: var(--primary);
+  --color-lime: var(--primary);
+  --color-ink: #0F172A;
+  --color-cream: #F8FAFC;
+
+  --font-display: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
 }
 
 :root {
-  --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+  --font-display: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
 
-  /* Apple Light Mode Standards */
-  --bg-primary: #F5F5F7;
+  /* Harmonious Executive Light Mode */
+  --bg-primary: #F8FAFC;
   --bg-surface: #FFFFFF;
-  --bg-panel: #FFFFFF;
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --text-main: #1D1D1F;
-  --text-muted: #6E6E73;
-  --dot-color: rgba(0, 0, 0, 0.05);
+  --bg-panel: #F1F5F9;
+  --border-subtle: #E2E8F0;
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --dot-color: rgba(15, 23, 42, 0.04);
+
+  /* Matching Primary & Secondary Tokens */
+  --primary: #1D4ED8;              /* Deep Royal Blue - High Contrast WCAG AAA */
+  --primary-foreground: #FFFFFF;    /* Pure White on Primary */
+  --secondary: #F1F5F9;            /* Clean Slate Neutral */
+  --secondary-foreground: #0F172A; /* Deep Slate on Secondary */
+  --accent: #2563EB;               /* Active Highlight */
+  --accent-foreground: #FFFFFF;
 }
 
 .dark {
-  /* Dark mode defaults */
-  --bg-primary: #0C0B14;
-  --bg-surface: #141224;
-  --bg-panel: #1C1A30;
-  --border-subtle: rgba(244, 239, 230, 0.08);
-  --text-main: #F4EFE6;
-  --text-muted: #B3AFC9;
-  --dot-color: rgba(244, 239, 230, 0.14);
+  /* Harmonious Executive Dark Mode */
+  --bg-primary: #0B0F19;
+  --bg-surface: #111827;
+  --bg-panel: #162033;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --dot-color: rgba(248, 250, 252, 0.06);
+
+  /* Matching Primary & Secondary Tokens */
+  --primary: #3B82F6;              /* Electric Sapphire Blue */
+  --primary-foreground: #FFFFFF;    /* Pure White on Primary */
+  --secondary: #1E293B;            /* Dark Slate Neutral */
+  --secondary-foreground: #F8FAFC; /* Crisp White on Secondary */
+  --accent: #60A5FA;               /* Soft Sky Highlight */
+  --accent-foreground: #0B0F19;
 }
 
 * {
@@ -60,7 +84,7 @@ html {
   min-height: 100%;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
