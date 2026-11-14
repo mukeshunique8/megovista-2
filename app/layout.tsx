@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
-import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, JetBrains_Mono, Playfair_Display, Inter } from 'next/font/google'
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import './globals.css'
@@ -16,6 +16,21 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   display: 'swap',
   weight: ['400', '500'],
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif-display',
+  display: 'swap',
+  weight: ['400', '700', '900'],
+  style: ['normal', 'italic'],
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans-tight',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '900'],
 })
 
 export const metadata: Metadata = {
@@ -40,7 +55,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
+      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable} ${inter.variable}`}
     >
       <body className="antialiased selection:bg-[#2563EB] selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

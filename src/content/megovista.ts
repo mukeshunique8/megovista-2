@@ -436,3 +436,249 @@ export const growthTimelineMilestones: GrowthTimelineMilestone[] = [
     placement: 'bottom',
   },
 ]
+
+// ─── AGENCY LANDING PAGE DATA ───────────────────────────────────────────────
+export const agencyCategories = [
+  "All Solutions",
+  "Payroll & Registers",
+  "EPFO & ESIC Governance",
+  "Tax, GST & Commercial",
+  "POSH & ISO Certifications",
+] as const
+
+export interface AgencyProject {
+  id: string
+  title: string
+  client: string
+  category: string
+  year: string
+  status: string
+  image: string
+  colSpan: string
+  description: string
+}
+
+export const agencyProjects: AgencyProject[] = [
+  {
+    id: "SOL_EPFO_01",
+    title: "EPFO & ESIC Section 14B Defense",
+    client: "Precision Engineering & Manufacturing",
+    category: "EPFO & ESIC Governance",
+    year: "2024",
+    status: "100% Zero Penalty",
+    image: "/images/services-compliance.jpg",
+    colSpan: "md:col-span-2",
+    description: "Complete remediation of historical PF arrears, damages mitigation under Section 14B, and implementation of automated pre-15th ECR filing protocol.",
+  },
+  {
+    id: "SOL_PAYROLL_02",
+    title: "Multi-State Corporate Payroll Architecture",
+    client: "National Tech & Logistics Scaleup",
+    category: "Payroll & Registers",
+    year: "2024",
+    status: "Active Autopilot",
+    image: "/images/services-payroll.jpg",
+    colSpan: "col-span-1",
+    description: "Automated monthly payroll across 4 Indian states, statutory Form A–E labour registers, and integrated TDS/PT withholdings.",
+  },
+  {
+    id: "SOL_ISO_03",
+    title: "ISO 27001 (ISMS) & 9001 Enterprise Certification",
+    client: "B2B SaaS & Cloud Infrastructure",
+    category: "POSH & ISO Certifications",
+    year: "2025",
+    status: "Accredited",
+    image: "/images/services-audit.jpg",
+    colSpan: "col-span-1",
+    description: "End-to-end information security management system (ISMS) implementation, audit gap analysis, and global enterprise RFP qualification.",
+  },
+  {
+    id: "SOL_POSH_04",
+    title: "POSH Internal Committee (ICC) & Workplace Safety",
+    client: "Enterprise FinTech & IT Services",
+    category: "POSH & ISO Certifications",
+    year: "2024",
+    status: "Compliant & Filed",
+    image: "/images/about-corporate.jpg",
+    colSpan: "md:col-span-2",
+    description: "Mandatory POSH policy drafting, senior external member appointment, bilingual staff sensitization, and annual employer report submission.",
+  },
+  {
+    id: "SOL_TAX_05",
+    title: "Commercial Tax, MSME Udyam & Class-3 DSC Setup",
+    client: "Healthcare & Diagnostic Network",
+    category: "Tax, GST & Commercial",
+    year: "2025",
+    status: "Active Filing",
+    image: "/images/services-tax.jpg",
+    colSpan: "col-span-1",
+    description: "Monthly GST reconciliations, MSME / Udyam subsidy facilitation, state commercial establishment licenses, and encrypted digital signatures.",
+  },
+  {
+    id: "SOL_LABOUR_06",
+    title: "Labour Act Registers & Inspection Preparedness",
+    client: "Omnichannel Retail & Warehousing",
+    category: "Payroll & Registers",
+    year: "2024",
+    status: "Inspection Shield",
+    image: "/images/hero-modern-hr.jpg",
+    colSpan: "col-span-1",
+    description: "Central and state Labour Act compliance (Forms A–E, wage slips, bonus registers, and gratuity calculations) shielding directors from personal liabilities.",
+  },
+  {
+    id: "SOL_AUDIT_07",
+    title: "Diagnostic Forensic HR & Statutory Audit",
+    client: "Heavy Fabrication & Industrial Plant",
+    category: "EPFO & ESIC Governance",
+    year: "2024",
+    status: "Clean Scorecard",
+    image: "/images/about-corporate.jpg",
+    colSpan: "md:col-span-2",
+    description: "Deep-dive 36-month forensic audit of historical PF, ESI, GST, and Labour filings uncovering latent liabilities before government inspectors do.",
+  },
+]
+
+export interface AgencyTeamMember {
+  id: string
+  name: string
+  role: string
+  credentials: string
+  bio: string
+  avatar: string
+}
+
+export const agencyTeam: AgencyTeamMember[] = [
+  {
+    id: "DIR_01",
+    name: "E. Gokulraj",
+    role: "Managing Partner & Statutory Lead",
+    credentials: "Statutory Compliance Specialist · ISO & CMMI Advisory",
+    bio: "Over a decade of direct domain expertise in statutory social security, labour court procedures, and enterprise operational governance.",
+    avatar: "/team/team.png",
+  },
+  {
+    id: "DIR_02",
+    name: "R. Sundaram",
+    role: "Senior Labour Law Counsel",
+    credentials: "Advocate · Industrial Relations Specialist",
+    bio: "Legal advisor specialized in Factories Act compliance, contract labour regulations, and Section 7A/14B dispute resolutions.",
+    avatar: "/images/about-corporate.jpg",
+  },
+  {
+    id: "DIR_03",
+    name: "Priya Chandrasekaran",
+    role: "Lead POSH Advisor & External Member",
+    credentials: "Certified POSH Trainer · Workplace Ethics Counsel",
+    bio: "Presiding external member for corporate Internal Complaints Committees, ensuring rigorous compliance with the POSH Act 2013.",
+    avatar: "/images/services-compliance.jpg",
+  },
+  {
+    id: "DIR_04",
+    name: "M. Venkatesh",
+    role: "Chief Quality & ISMS Lead Auditor",
+    credentials: "Lead Auditor ISO 9001 / ISO 27001 / CMMI",
+    bio: "Guiding enterprise organizations through global compliance frameworks and data security standards needed for international buyer contracts.",
+    avatar: "/images/services-audit.jpg",
+  },
+  {
+    id: "DIR_05",
+    name: "K. Rajesh",
+    role: "Head of Payroll & Taxation Desk",
+    credentials: "Tax Consultant · Automated Payroll Specialist",
+    bio: "Supervising monthly multi-state payroll computation, PF/ESI challans, and GST reconciliations with zero-penalty accuracy.",
+    avatar: "/images/services-payroll.jpg",
+  },
+  {
+    id: "DIR_06",
+    name: "Anand Kumar",
+    role: "Client Relations & Government Liaison",
+    credentials: "Liaison Officer · Department Operations",
+    bio: "Facilitating seamless portal reconciliations, KYC validations, and direct department interactions with EPFO and ESIC inspectorates.",
+    avatar: "/images/hero-modern-hr.jpg",
+  },
+]
+
+export interface AgencyClient {
+  id: string
+  name: string
+  sector: string
+  engagements: string
+  status: string
+}
+
+export const agencyClients: AgencyClient[] = [
+  {
+    id: "CL_01",
+    name: "Manufacturing & Industrial Engineering",
+    sector: "Heavy Fabrication, Auto Ancillaries, Assembly",
+    engagements: "Turnkey PF, ESI, Factory Act & Safety",
+    status: "Active Governance",
+  },
+  {
+    id: "CL_02",
+    name: "Information Technology & Enterprise SaaS",
+    sector: "Cloud Infrastructure, Software Development",
+    engagements: "ISO 27001 ISMS, Multi-State Payroll & POSH",
+    status: "Active Governance",
+  },
+  {
+    id: "CL_03",
+    name: "Healthcare & Multi-Specialty Clinics",
+    sector: "Hospitals, Diagnostic Centers, Pharmaceuticals",
+    engagements: "Statutory ESIC, GST Reconciliation & Registrations",
+    status: "Active Governance",
+  },
+  {
+    id: "CL_04",
+    name: "Retail, FMCG & Commercial Warehousing",
+    sector: "Supply Chain, Omnichannel Retail, Distribution",
+    engagements: "Labour Act Registers (Forms A–E) & Shops License",
+    status: "Active Governance",
+  },
+  {
+    id: "CL_05",
+    name: "Financial Services & FinTech Scaleups",
+    sector: "NBFCs, Payment Gateways, WealthTech",
+    engagements: "CMMI Appraisal Advisory, POSH ICC & Audits",
+    status: "Active Governance",
+  },
+  {
+    id: "CL_06",
+    name: "Hospitality & Commercial Services",
+    sector: "Hotels, Facility Management, Logistics",
+    engagements: "Contract Labour Regulation & EPF Advisory",
+    status: "Active Governance",
+  },
+]
+
+export const agencyManifesto = {
+  eyebrow: "Our Philosophy",
+  titlePrimary: "Statutory Precision.",
+  titleAccent: "Engineered for Scale.",
+  lead: "An uncompromising approach to corporate compliance, statutory governance, and operational credibility. Built for ambitious enterprises.",
+  paragraphs: [
+    "Compliance is not bureaucratic friction — when engineered properly, it is the ultimate competitive moat. We build corporate operating systems that remove the threat of statutory defaults, penalty compounding, and director personal liability.",
+    "We believe in mathematical precision. In statutory social security, a single misplaced KYC detail or delayed filing after the 15th results in compounding damages under Sections 14B and 7Q. Megovista enforces a strict pre-15th protocol backed by automated audits, certified DSC security, and seasoned legal advisory.",
+    "Whether your enterprise is hiring its 10th employee or scaling past 500 across multiple Indian states, Megovista guarantees total regulatory peace of mind.",
+  ],
+  stats: [
+    { label: "Statutory Filing Accuracy", value: "100%" },
+    { label: "Penalty Default Rate", value: "Zero" },
+    { label: "Turnkey Regulatory Frameworks", value: "11+" },
+    { label: "Workforce Scale Supported", value: "500+" },
+  ],
+  partnersHeading: "Key Industry Verticals Governed",
+}
+
+export const agencyMarquee = [
+  "MEGOVISTA HR SOLUTIONS",
+  "STATUTORY SOCIAL SECURITY",
+  "EPFO & ESIC PRE-15TH PROTOCOL",
+  "ZERO PENALTY TRACK RECORD",
+  "LABOUR LAW GOVERNANCE",
+  "CHENNAI HEADQUARTERS",
+  "ISO 9001 & ISO 27001 ADVISORY",
+  "POSH WORKPLACE COMPLIANCE",
+  "TAMIL NADU & PAN-INDIA",
+]
+

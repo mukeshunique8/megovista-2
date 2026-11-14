@@ -140,13 +140,22 @@ body {
   background-size: 40px 40px;
 }
 
-/* Explicit class fallbacks so .font-display, .font-serif, .font-mono always work */
+/* Explicit class fallbacks so .font-display, .font-serif, .font-mono, .font-serif-display always work */
 .font-display {
-  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 .font-serif {
-  font-family: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif !important;
+  font-family: var(--font-serif-display), 'Playfair Display', Georgia, serif !important;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif-display), 'Playfair Display', Georgia, serif !important;
+}
+
+.font-sans-tight {
+  font-family: var(--font-sans-tight), 'Inter', var(--font-sans), system-ui, sans-serif !important;
+  letter-spacing: -0.02em;
 }
 
 .font-mono {
@@ -154,7 +163,7 @@ body {
 }
 
 .font-serif-italic {
-  font-family: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif !important;
+  font-family: var(--font-serif-display), 'Playfair Display', Georgia, serif !important;
   font-style: italic !important;
 }
 
@@ -162,6 +171,21 @@ body {
   font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace !important;
   text-transform: uppercase;
   letter-spacing: 0.14em;
+}
+
+/* Image Zoom & Brutalist Exec Card Transitions */
+.img-zoom-wrapper {
+  overflow: hidden;
+}
+
+.img-zoom-wrapper img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+  filter: grayscale(100%);
+}
+
+.exec-card:hover .img-zoom-wrapper img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
 }
 
 /* Fluid type utilities */
