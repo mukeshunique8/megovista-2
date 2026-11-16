@@ -12,11 +12,15 @@ import {
   CheckCircle2,
   Sparkles,
   MessageSquare,
+  Loader2,
+  AlertCircle,
 } from 'lucide-react'
 import { contactContent } from '@/src/content/megovista'
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,9 +29,47 @@ export function ContactSection() {
     message: '',
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok || data.error) {
+        throw new Error(data.error || 'Failed to send consultation request.')
+      }
+
+      setSubmitted(true)
+    } catch (err: any) {
+      console.error('Contact submission error:', err)
+      setError(
+        err.message || 'Unable to connect to advisory desk. Please try again or message directly via WhatsApp.'
+      )
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleReset = () => {
+    setSubmitted(false)
+    setError(null)
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      service: contactContent.form.serviceOptions[0],
+      message: '',
+    })
   }
 
   return (
@@ -177,7 +219,7 @@ export function ContactSection() {
                   </p>
                   <button
                     type="button"
-                    onClick={() => setSubmitted(false)}
+                    onClick={handleReset}
                     className="mt-8 px-6 py-2.5 rounded-full text-xs font-medium border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:bg-black/5 dark:hover:bg-white/5 text-[var(--text-main)] transition-colors cursor-pointer"
                   >
                     {contactContent.ui.resetButton}
@@ -185,6 +227,14 @@ export function ContactSection() {
                 </motion.div>
               ) : (
                 <form key="form" onSubmit={handleSubmit} className="space-y-5">
+                  {/* Error Callout Banner */}
+                  {error && (
+                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs sm:text-sm flex items-start gap-2.5">
+                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                      <span>{error}</span>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Full Name */}
                     <div>
@@ -194,9 +244,10 @@ export function ContactSection() {
                       <input
                         type="text"
                         required
+                        disabled={loading}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all"
+                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all disabled:opacity-50"
                         placeholder="e.g. Anand Kumar"
                       />
                     </div>
@@ -209,9 +260,10 @@ export function ContactSection() {
                       <input
                         type="email"
                         required
+                        disabled={loading}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all"
+                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all disabled:opacity-50"
                         placeholder="anand@company.com"
                       />
                     </div>
@@ -226,9 +278,10 @@ export function ContactSection() {
                       <input
                         type="tel"
                         required
+                        disabled={loading}
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all"
+                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all disabled:opacity-50"
                         placeholder="+91 98765 43210"
                       />
                     </div>
@@ -239,9 +292,10 @@ export function ContactSection() {
                         {contactContent.form.serviceLabel}
                       </label>
                       <select
+                        disabled={loading}
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all cursor-pointer"
+                        className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all cursor-pointer disabled:opacity-50"
                       >
                         {contactContent.form.serviceOptions.map((opt) => (
                           <option key={opt} value={opt} className="bg-[var(--bg-surface)] text-[var(--text-main)]">
@@ -259,9 +313,10 @@ export function ContactSection() {
                     </label>
                     <textarea
                       rows={4}
+                      disabled={loading}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-black/[0.02] dark:bg-white/[0.03] text-sm text-[var(--text-main)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all resize-none disabled:opacity-50"
                       placeholder="Current team size, existing consultant status, or upcoming statutory deadlines..."
                     />
                   </div>
@@ -270,10 +325,20 @@ export function ContactSection() {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white text-xs sm:text-sm font-medium tracking-wide shadow-md hover:opacity-95 transition-all cursor-pointer"
+                      disabled={loading}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white text-xs sm:text-sm font-medium tracking-wide shadow-md hover:opacity-95 transition-all cursor-pointer disabled:opacity-60"
                     >
-                      <Send className="w-3.5 h-3.5" />
-                      <span>{contactContent.form.submitLabel}</span>
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <span>Sending Request...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-3.5 h-3.5" />
+                          <span>{contactContent.form.submitLabel}</span>
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>
@@ -287,4 +352,3 @@ export function ContactSection() {
 }
 
 export default ContactSection
-

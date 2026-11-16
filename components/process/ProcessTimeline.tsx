@@ -20,19 +20,19 @@ export function ProcessTimeline() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.45
+      const triggerY = window.innerHeight * 0.45
 
+      let currentIdx = 0
       for (let i = 0; i < sectionRefs.current.length; i++) {
         const el = sectionRefs.current[i]
         if (el) {
-          const top = el.offsetTop
-          const height = el.offsetHeight
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActivePhaseIndex(i)
-            break
+          const rect = el.getBoundingClientRect()
+          if (rect.top <= triggerY) {
+            currentIdx = i
           }
         }
       }
+      setActivePhaseIndex(currentIdx)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -43,8 +43,8 @@ export function ProcessTimeline() {
   const scrollToPhase = (index: number) => {
     const target = sectionRefs.current[index]
     if (target) {
-      const yOffset = -110
-      const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset
+      const yOffset = -120
+      const y = target.getBoundingClientRect().top + window.scrollY + yOffset
       window.scrollTo({ top: y, behavior: 'smooth' })
       setActivePhaseIndex(index)
     }

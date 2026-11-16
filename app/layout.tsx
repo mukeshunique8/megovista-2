@@ -51,6 +51,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const defaultTheme = process.env.NEXT_PUBLIC_DEFAULT_THEME || 'dark'
+
   return (
     <html
       lang="en"
@@ -58,7 +60,11 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable} ${inter.variable}`}
     >
       <body className="antialiased selection:bg-[#2563EB] selection:text-white">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme={defaultTheme}
+          enableSystem={defaultTheme === 'system'}
+        >
           {children}
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
