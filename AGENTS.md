@@ -34,17 +34,19 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ---
 
-## 2. Mandatory Dual Theme Support (Dark & Light Mode)
+## 2. Mandatory Dual Theme & Component Integration Standards
 
-- **Rule**: Every single component—both existing updates and new additions—MUST fully support both Light Mode and Dark Mode.
-- **Enforcement**:
-  - Never assume Dark Mode or Light Mode is the only default. All components must look polished and intentional in both themes.
-  - **High Contrast Rule**:
-    - In Dark Mode: Light text (`text-[#F4EFE6]`, `text-white`, `text-[var(--text-main)]`) on dark backgrounds/panels.
-    - In Light Mode: Dark text (`text-[#1D1D1F]`, `text-[var(--text-main)]`) on light backgrounds/panels.
-    - Never render dark text on dark cards or light text on light cards.
-  - Form controls, cards, badges, buttons, borders, and SVGs must all have explicit light and dark styles.
-  - Tailwind v4 uses `@custom-variant dark (&:where(.dark, .dark *));` in `app/globals.css`, so all `dark:` classes react to `.dark` on `<html>`.
+- **Rule**: Whenever any component is added or provided by the user, it MUST immediately be adapted to strictly reflect our app's theming system and design tokens:
+  - **Full Dual Theme Support (Dark & Light Mode)**:
+    - Never leave hardcoded light-only or dark-only colors (e.g., raw `bg-white`, `border-zinc-200`, `bg-black`, `text-zinc-800`).
+    - Adapt all elements to support both themes seamlessly using semantic CSS variables (`bg-[var(--bg-surface)]`, `bg-[var(--bg-primary)]`, `text-[var(--text-main)]`, `text-[var(--text-muted)]`, `border-[var(--border-subtle)]`) or Tailwind dual-mode utilities (`dark:`).
+  - **Primary & Secondary Color Theming**:
+    - Interactive states, active indicators, masks, hover fills, and accents must use our designated primary and secondary tokens (`var(--primary)`, `var(--secondary)`, `bg-primary`, `text-primary-foreground`, `bg-secondary`, etc.).
+  - **Megovista Data Integration**:
+    - Replace all generic/dummy links, labels, titles, and placeholders with actual Megovista constants and copy from `src/content/megovista.ts` and `src/constants/routes.ts`.
+  - **Incremental Integration**:
+    - Integrate each component one by one with clean layout positioning.
+    - Do not run `tsc` or `build` unless explicitly asked by the user.
 
 ---
 
@@ -70,6 +72,20 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## 5. Verification & Quality Gates
 
 - Before completing any task:
-  1. Run `pnpm exec tsc --noEmit` to verify 0 TypeScript errors.
-  2. Run `pnpm run build` on structural changes to ensure clean static prerendering.
+  1. Run `pnpm exec tsc --noEmit` to verify 0 TypeScript errors (only when explicitly requested by user).
+  2. Run `pnpm run build` on structural changes to ensure clean static prerendering (only when explicitly requested by user).
   3. Verify contrast and visual integrity in both Light and Dark modes.
+
+---
+
+## 6. Global Typography & Font Weight Hierarchy Standards
+
+- **Core Aesthetic**: Clean, modern, refined Apple / Linear display typography.
+- **Display Headlines**:
+  - Use refined, elegant weights: `font-light` (300) to `font-normal` (400) for large display titles and hero headlines. Never use heavy, chunky black (800-900) weights.
+  - Apply tight display tracking (`tracking-tight` / `-0.035em`) and tight line height (`leading-[1.05]`).
+  - Accent lines use glowing gradient fills (e.g., icy cyan/blue to violet).
+- **Body & Subtitles**:
+  - `font-light` or `font-normal` (300-400), clean line height (`leading-relaxed`), and muted contrast (`text-[var(--text-muted)]`).
+- **Controls & Badges**:
+  - Pill containers with `font-medium` (500) to `font-semibold` (600), clean letter spacing.

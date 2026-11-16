@@ -58,42 +58,42 @@
   /* Apple Muted Gray */
   --dot-color: rgba(29, 29, 31, 0.04);
 
-  /* Trust & Process Primary Tokens (Executive Trust Royal Blue) */
+  /* Trust & Process Primary Tokens (Executive Royal Blue & Radiant Violet) */
   --primary: #1D4ED8;
   /* Trust Royal Blue - High Contrast WCAG AAA */
   --primary-foreground: #FFFFFF;
   /* Pure White on Primary */
-  --secondary: #F0F2F5;
-  /* Clean Slate Neutral */
-  --secondary-foreground: #1D1D1F;
-  /* Deep Slate on Secondary */
-  --accent: #2563EB;
-  /* Active Highlight */
+  --secondary: #7C3AED;
+  /* Radiant Violet */
+  --secondary-foreground: #FFFFFF;
+  /* Crisp White on Secondary */
+  --accent: #6366F1;
+  /* Indigo Highlight */
   --accent-foreground: #FFFFFF;
 }
 
 .dark {
   /* Harmonious Executive Dark Mode */
-  --bg-primary: #0B0F19;
-  --bg-surface: #111827;
-  --bg-panel: #162033;
+  --bg-primary: #070A14;
+  --bg-surface: #0E1326;
+  --bg-panel: #141B33;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --text-main: #F8FAFC;
   --text-muted: #94A3B8;
   --dot-color: rgba(248, 250, 252, 0.06);
 
-  /* Matching Primary & Secondary Tokens */
+  /* Matching Primary & Secondary Tokens (Blue & Violet) */
   --primary: #3B82F6;
   /* Electric Sapphire Blue */
   --primary-foreground: #FFFFFF;
   /* Pure White on Primary */
-  --secondary: #1E293B;
-  /* Dark Slate Neutral */
-  --secondary-foreground: #F8FAFC;
+  --secondary: #8B5CF6;
+  /* Luminous Violet */
+  --secondary-foreground: #FFFFFF;
   /* Crisp White on Secondary */
-  --accent: #60A5FA;
-  /* Soft Sky Highlight */
-  --accent-foreground: #0B0F19;
+  --accent: #818CF8;
+  /* Soft Sky / Indigo Highlight */
+  --accent-foreground: #070A14;
 }
 
 * {
@@ -223,4 +223,20 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
+}
+
+/* React Bits Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 25s) linear infinite;
 }
